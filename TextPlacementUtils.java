@@ -22,7 +22,7 @@ public class TextPlacementUtils {
 	/**
 	* Represents a position relative to a string of text.  For instance,
 	* if we want to position a string such that its center is at a given
-	* (x,y) coordinate, then we would use the CENTER enumerated value.
+	* (x,y) coordinate, then we would use the CENTER enumerated value. 
 	*/
     public enum AnchorPoint{
         UPPER_LEFT,
@@ -35,6 +35,12 @@ public class TextPlacementUtils {
         LEFT_CENTER,
         CENTER
     };
+
+
+	public static void drawText(String text, AnchorPoint point, Graphics2D g2, float x, float y) {
+		Font currentFont = g2.getFont();
+		drawText(text, currentFont, point, g2, x, y);
+	}
 
 	/**
 	* Draws the given text to the graphics context <code>g2</code>, positioning
