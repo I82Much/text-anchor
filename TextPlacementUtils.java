@@ -37,8 +37,20 @@ public class TextPlacementUtils {
     };
 
 	/**
-	* Given a TextLayout object
+	* Draws the given text to the graphics context <code>g2</code>, positioning
+	* the text such that the text's AnchorPoint <code>point</code> is located at
+	* position x, y.
+	*
+	* For instance, to place text such that it's upper right corner is at (40, 40),
+	* the <code>point</code> variable should be set to <code>AnchorPoint.UPPER_RIGHT</code>,
+	* with x and y = 40.
 	*/
+	public static void drawText(String text, Font font, AnchorPoint point, Graphics2D g2, float x, float y) {
+		FontRenderContext frc = g2.getFontRenderContext();
+		TextLayout layout = new TextLayout(text, font, frc);
+		drawText(layout, point, g2, x, y);
+	}
+
     public static void drawText(TextLayout text, AnchorPoint point, Graphics2D g2, float x, float y) {
         float translationX = 0.0f;
         float translationY = 0.0f;

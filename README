@@ -1,0 +1,30 @@
+2010-12-26
+
+This project exists to make drawing text in Java easier.  A simple task like centering text at a given (x,y) on the screen consists of at least 4 steps:
+
+* Getting the FontMetrics from the graphics context
+* Calculating the bounds of the string of text you are trying to draw
+* Calculating the offsets you must apply to the drawString method from the bounds (drawString takes the (x,y) location of the bottom left corner of the text, not the top left like most other graphics operations)
+* Calling drawString() with the text and the offsets plus the target (x,y) location
+
+If you want the text at a different location, e.g. you want the upper left corner of the text to be at a certain location, then you have to change the logic in step 3.
+
+I found this work so tedious and error prone that I have encapsulated the logic in this TextUtils class.  You need just one method call to accomplish the above steps:
+
+    public static void drawText(String text, Font font, AnchorPoint point, Graphics2D g2, float x, float y)
+    
+
+The AnchorPoint enum defines 9 different text relative locations where you can anchor the text: 
+
+* UPPER_LEFT
+* TOP_CENTER
+* UPPER_RIGHT
+* RIGHT_CENTER
+* LOWER_RIGHT
+* BOTTOM_CENTER
+* LOWER_LEFT
+* LEFT_CENTER
+* CENTER
+
+
+
